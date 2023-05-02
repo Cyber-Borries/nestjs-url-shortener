@@ -12,8 +12,11 @@ export class UrlController {
   }
   @Get(':shortUrl')
   @Redirect('')
-  async urlRedirect(@Param('shortUrl') shortUrl: string): Promise<string> {
+  async urlRedirect(@Param('shortUrl') shortUrl: string): Promise<any> {
     const originalUrl = await this.urlService.urlRedirect(shortUrl);
-    return originalUrl;
+    return {
+      url: originalUrl,
+      statusCode: 301,
+    };
   }
 }

@@ -48,9 +48,6 @@ export class UrlService {
     if (!findUrl) {
       throw new NotFoundException();
     }
-    return {
-      url: dto.originalUrl,
-      statusCode: 301,
-    };
+    return findUrl.originalUrl;
   }
 }
