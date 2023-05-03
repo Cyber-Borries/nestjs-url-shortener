@@ -1,6 +1,16 @@
-import { Controller, Post, Body, Get, Redirect, Param } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Redirect,
+  Param,
+  Res,
+  Render,
+} from '@nestjs/common';
 import { UrlService } from './url.service';
 import { urlCreateInput } from '../dto/index';
+import { Response } from 'express';
 
 @Controller('url')
 export class UrlController {
@@ -11,12 +21,16 @@ export class UrlController {
     return this.urlService.urlCreate(dto);
   }
   @Get(':shortUrl')
-  @Redirect('')
-  async urlRedirect(@Param('shortUrl') shortUrl: string): Promise<any> {
+  @Render('timeout')
+  async urlRedirect(@Param('shortUrl') shortUrl: string, @Res() res: Response) {
     const originalUrl = await this.urlService.urlRedirect(shortUrl);
-    return {
-      url: originalUrl,
-      statusCode: 301,
-    };
+    console.log(originalUrl);
+
+    if (!res.headersSent) {
+      res.status(301).redirect(`https://${originalUrl}`);
+    }
+
+    (global as any).originalUrl = originalUrl;
+    return { originalUrl };
   }
 }
