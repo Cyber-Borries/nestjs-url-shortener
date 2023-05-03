@@ -28,47 +28,12 @@
 
 ## Installation
 
-```bash
-$ npm install
-```
+This is a practice app for making Nestjs apps. 
 
-## Running the app
+## What is this app?
 
-```bash
-# development
-$ npm run start
+The app accepts a URL form a user, checks to see if the URL is in the DB, if not it returns a short URL that is randomley generated, if it does exist it returns the short URL from the DB
 
-# watch mode
-$ npm run start:dev
+## Not working yet
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-"# nestjs-url-shortener" 
+The app doesn't redirect the user to the original URL yet.
