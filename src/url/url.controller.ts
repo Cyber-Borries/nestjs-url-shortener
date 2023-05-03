@@ -25,11 +25,11 @@ export class UrlController {
   async urlRedirect(@Param('shortUrl') shortUrl: string, @Res() res: Response) {
     const originalUrl = await this.urlService.urlRedirect(shortUrl);
     console.log(originalUrl);
-
-    if (!res.headersSent) {
-      res.status(301).redirect(`https://${originalUrl}`);
-    }
-
+    setTimeout(() => {
+      if (!res.headersSent) {
+        res.status(301).redirect(`https://${originalUrl}`);
+      }
+    }, 1000);
     (global as any).originalUrl = originalUrl;
     return { originalUrl };
   }
