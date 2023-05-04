@@ -33,7 +33,7 @@ export class UrlService {
       });
       return newUrl.shortUrl;
     } catch (error) {
-      if (error) console.log(error);
+      return 'Error creating URL';
     }
 
     //save short and original url to db
