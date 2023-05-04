@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  url-db:
+    image: postgres:13
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=nest
+    volumes:
+      - ./prisma/migrations/20230502094846_change_id_to_int:/docker-entrypoint-initdb.d/
+      - ./db:/var/lib/postgresql
+  url-shortener:
+    image: northroomza/nestjs-url-shortener:latest
+    build:
+      context: .
+      dockerfile: DockerFile
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
