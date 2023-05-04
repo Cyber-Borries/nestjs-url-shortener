@@ -1,6 +1,6 @@
 # LIVE PREVIEW
 
-the live preview can be viewed at [https://url.shorter.northroom.dev]
+the live preview can be viewed by [clicking here](https://url.shorter.northroom.dev)
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
