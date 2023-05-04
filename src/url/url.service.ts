@@ -34,6 +34,7 @@ export class UrlService {
       return newUrl.shortUrl;
     } catch (error) {
       console.log(error);
+      console.log('Hello');
       return 'Error creating URL';
     }
 
