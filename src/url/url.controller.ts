@@ -23,7 +23,6 @@ export class UrlController {
   @Get(':shortUrl')
   async urlRedirect(@Param('shortUrl') shortUrl: string, @Res() res: Response) {
     const originalUrl = await this.urlService.urlRedirect(shortUrl);
-    console.log(typeof originalUrl);
     if (!originalUrl) {
       res.render('timeout', { shortUrl }, (e, html) => {
         res.send(html);
