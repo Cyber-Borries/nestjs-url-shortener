@@ -21,16 +21,18 @@ export class UrlController {
     return this.urlService.urlCreate(dto);
   }
   @Get(':shortUrl')
-  @Render('timeout')
   async urlRedirect(@Param('shortUrl') shortUrl: string, @Res() res: Response) {
     const originalUrl = await this.urlService.urlRedirect(shortUrl);
-    console.log(originalUrl);
-    setTimeout(() => {
-      if (!res.headersSent) {
-        res.status(301).redirect(`https://${originalUrl}`);
-      }
-    }, 1000);
-    (global as any).originalUrl = originalUrl;
-    return { originalUrl };
+    console.log(typeof originalUrl);
+    if (!originalUrl) {
+      res.render('timeout', { shortUrl }, (e, html) => {
+        res.send(html);
+      });
+    } else {
+      res.status(301).redirect(`https://${originalUrl.originalUrl}`);
+      return { originalUrl };
+    }
+
+    // (global as any).originalUrl = originalUrl;
   }
 }

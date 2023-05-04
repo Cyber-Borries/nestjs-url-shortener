@@ -39,15 +39,11 @@ export class UrlService {
     //save short and original url to db
   }
 
-  async urlRedirect(@Param('shortUrl') shortUrl: string): Promise<string> {
-    const findUrl = await this.prisma.url.findFirst({
+  urlRedirect(@Param('shortUrl') shortUrl: string) {
+    return this.prisma.url.findFirst({
       where: {
         shortUrl,
       },
     });
-    if (!findUrl) {
-      throw new NotFoundException();
-    }
-    return findUrl.originalUrl;
   }
 }
