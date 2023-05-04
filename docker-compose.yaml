@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=nest
     volumes:
-      - ./prisma/migrations/20230502094846_change_id_to_int:/docker-entrypoint-initdb.d/
+      - ./prisma/migrations/20230504082418_latest:/docker-entrypoint-initdb.d/
       - ./db:/var/lib/postgresql
   url-shortener:
     image: northroomza/nestjs-url-shortener:latest
